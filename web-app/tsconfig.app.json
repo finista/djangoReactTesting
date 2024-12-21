@@ -27,5 +27,5 @@
       "@public/*": ["./public/*"]
     }
   },
-  "include": ["src", "client/main.tsx", "imports/components/app/App.tsx", "imports/vite-env.d.ts"]
+  "include": ["client", "client/vite-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
