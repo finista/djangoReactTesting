@@ -20,7 +20,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "paths": {
+      "@imports/*": ["./imports/*"],
+      "@public/*": ["./public/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "client/main.tsx", "imports/components/app/App.tsx", "imports/vite-env.d.ts"]
 }
