@@ -31,9 +31,6 @@ DEBUG = not IS_PRODUCTION
 
 ALLOWED_HOSTS = ["*"] if not IS_PRODUCTION else os.getenv("ALLOWED_HOSTS", "").split(",")
 
-CORS_ALLOW_ALL_ORIGINS = not IS_PRODUCTION
-CORS_ALLOWS_CREDENTIALS = True
-
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
@@ -78,8 +75,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+if not IS_PRODUCTION:
+    MIDDLEWARE.insert(0, 'middleware.disable_csrf.DisableCSRF')
 
 ROOT_URLCONF = 'api.urls'
 
@@ -156,3 +156,13 @@ STATIC_ROOT = BASE_DIR / "static"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+CORS_TRUSTED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "").split(",")
+CSRF_COOKIE_HTTPONLY = False
+
+
+if not IS_PRODUCTION:
+    CSRF_TRUSTED_ORIGINS = ['http://localhost:5173', 'https://localhost:5173']
+    CORS_ALLOW_ALL_ORIGINS = True
+    CORS_ALLOW_CREDENTIALS = True
+    ALLOWED_HOSTS = ['*']

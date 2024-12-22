@@ -9,11 +9,7 @@ import { apiConstants } from "@imports/core/constants"
 import { ProtectedRouteProps, AuthorizationState } from "./types"
 
 const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
-    console.log("Protected route")
-
     const [isAuthorized, setIsAuthorized] = useState<AuthorizationState>("waiting")
-
-    console.log(isAuthorized)
 
     useEffect(() => {
         auth().catch((error) => {
@@ -56,7 +52,7 @@ const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
         }
     }
 
-    if (isAuthorized === "invalid") {
+    if (isAuthorized === "waiting") {
         return <div>Loading...</div>
     }
 

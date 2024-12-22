@@ -8,13 +8,11 @@ import Home from '@imports/pages/Home'
 import NotFound from '@imports/pages/NotFound'
 
 const Logout = () => {
-  console.log("B")
   localStorage.clear()
   return <Navigate to="/login" />
 }
 
 const RegisterAndLogout = () => {
-  console.log("A")
   localStorage.clear()
   return <Register />
 }
@@ -33,6 +31,7 @@ const App = () => {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<RegisterAndLogout />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

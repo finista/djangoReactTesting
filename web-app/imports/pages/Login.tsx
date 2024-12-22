@@ -1,6 +1,8 @@
+import AuthForm from "@imports/components/auth_form/component"
+
 const Login = () => {
   return (
-    <div>Login</div>
+    <AuthForm route="user/token/" method="login" />
   )
 }
 

@@ -1,6 +1,8 @@
+import AuthForm from "@imports/components/auth_form/component"
+
 const Register = () => {
   return (
-    <div>Register</div>
+    <AuthForm route="/user/register/" method="register"/>
   )
 }
 
