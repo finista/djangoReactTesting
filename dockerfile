@@ -25,7 +25,7 @@ RUN python3 -m pip install -r requirements.txt
 # Compile django app
 RUN python3 manage.py makemigrations
 RUN python3 manage.py migrate
-RUN python3 manage.py collectstatic
+RUN python3 manage.py collectstatic --noinput
 
 #Stage 3: Final build
 WORKDIR /app
