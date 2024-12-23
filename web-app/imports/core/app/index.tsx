@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 
-import ProtectedRoute from '@imports/core/protected_route'
+import { ProtectedRoute, AuthProvider } from '@imports/core/protected_route'
 
 import Login from '@imports/pages/Login'
 import Register from '@imports/pages/Register'
@@ -26,9 +26,11 @@ const App = () => {
         <Route
           path="/"
           element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
+            <AuthProvider>
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            </AuthProvider>
           }
         />
         <Route path="/login" element={<Login />} />
