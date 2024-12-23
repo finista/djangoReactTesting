@@ -9,35 +9,10 @@ import { apiConstants } from "@imports/core/constants"
 import './style.scss'
 import { ProtectedRouteProps, AuthorizationState, AuthContextType } from "./types"
 
-const [isAuthorized, setIsAuthorized] = useState<AuthorizationState>("waiting")
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const authorizationSuccess = isAuthorized === "success"
-
-    return (
-        <AuthContext.Provider value={{ isAuthorized: authorizationSuccess }}>
-            {children}
-        </AuthContext.Provider>
-    )
-}
-
-export const useAuthContext = () => {
-    const context = useContext(AuthContext)
-    if (!context) {
-        throw new Error('useAuthContext must be used with an AuthProvider!')
-    }
-
-    return context
-}
-
-export const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
-    useEffect(() => {
-        auth().catch((error) => {
-            console.log(`Failed to authorize user, error: ${error}`)
-            setIsAuthorized("invalid")
-        })
-    }, [])
+    const [isAuthorized, setIsAuthorized] = useState<AuthorizationState>("waiting")
 
     const refreshToken = async () => {
         const refreshToken = localStorage.getItem(apiConstants.REFRESH_TOKEN)
@@ -73,9 +48,42 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
         }
     }
 
-    if (isAuthorized === "waiting") {
-        return <h1 className="middle-text">Authorizing...</h1>
+    useEffect(() => {
+        auth().catch((error) => {
+            console.log(`Failed to authorize user, error: ${error}`)
+            setIsAuthorized("invalid")
+        })
+    }, [])
+
+    return (
+        <AuthContext.Provider value={{ isAuthorized: isAuthorized }}>
+            {children}
+        </AuthContext.Provider>
+    )
+}
+
+export const useAuthContext = () => {
+    const context = useContext(AuthContext)
+    if (!context) {
+        throw new Error('useAuthContext must be used with an AuthProvider!')
     }
 
-    return isAuthorized === "success" ? children : <Navigate to="/login" />
+    return context
+}
+
+export const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
+    const { isAuthorized } = useAuthContext()
+
+    switch (isAuthorized) {
+        case 'waiting':
+            return <h1 className="middle-text">Authorizing...</h1>
+        case 'success':
+            return (
+                <AuthProvider>
+                    {children}
+                </AuthProvider>
+            )
+        default:
+            <Navigate to="/login" />
+    }
 }
