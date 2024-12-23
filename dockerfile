@@ -22,6 +22,7 @@ COPY . /app/web-app/
 RUN npm run prod
 
 #Stage 3: Final build
+FROM python:3.12.2-bullseye AS final
 
 WORKDIR /app
 
