@@ -4,7 +4,7 @@ export interface ProtectedRouteProps {
 }
 
 export interface AuthContextType {
-    isAuthorized: boolean;
+    isAuthorized: AuthorizationState;
 }
 
 export type AuthorizationState = "waiting" | "invalid" | "success"
