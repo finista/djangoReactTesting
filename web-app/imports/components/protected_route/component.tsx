@@ -6,6 +6,7 @@ import { jwtDecode } from "jwt-decode"
 import api from "@imports/core/api"
 import { apiConstants } from "@imports/core/constants"
 
+import './style.scss'
 import { ProtectedRouteProps, AuthorizationState } from "./types"
 
 const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
@@ -21,7 +22,7 @@ const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
     const refreshToken = async () => {
         const refreshToken = localStorage.getItem(apiConstants.REFRESH_TOKEN)
         try {
-            const res = await api.post("/user/refresh", { refresh: refreshToken })
+            const res = await api.post("/user/refresh/", { refresh: refreshToken })
             if (res.status === 200) {
                 localStorage.setItem(apiConstants.ACCESS_TOKEN, res.data.access)
                 setIsAuthorized("success")
@@ -53,7 +54,7 @@ const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
     }
 
     if (isAuthorized === "waiting") {
-        return <div>Loading...</div>
+        return <h1 className="middle-text">Authorizing...</h1>
     }
 
     return isAuthorized === "success" ? children : <Navigate to="/login" />

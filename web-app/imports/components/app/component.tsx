@@ -7,6 +7,8 @@ import Register from '@imports/pages/Register'
 import Home from '@imports/pages/Home'
 import NotFound from '@imports/pages/NotFound'
 
+import './style.scss'
+
 const Logout = () => {
   localStorage.clear()
   return <Navigate to="/login" />
