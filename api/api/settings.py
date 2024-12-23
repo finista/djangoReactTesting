@@ -147,19 +147,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "static"
+REACT_CLIENT_PATH = BASE_DIR / "client/dist/index.html"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "client"
+]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 CORS_TRUSTED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "").split(",")
 CSRF_COOKIE_HTTPONLY = False
-
 
 if not IS_PRODUCTION:
     CSRF_TRUSTED_ORIGINS = ['http://localhost:5173', 'https://localhost:5173']

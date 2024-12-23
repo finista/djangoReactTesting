@@ -15,11 +15,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, re_path, include
+from django.conf.urls.static import static
+from django.conf import settings
+
+from user.views import DefaultReactView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('products.urls')),
     path('user/', include('user.urls')),
-    path('api-auth/', include("rest_framework.urls"))
-]
+    path('api-auth/', include("rest_framework.urls")),
+    
+    # React app
+    re_path(r"^$", DefaultReactView.as_view()),
+    re_path(r"^(?!static)(?:.*)/?$", DefaultReactView.as_view())
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
