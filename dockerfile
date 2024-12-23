@@ -2,7 +2,7 @@
 FROM node:18 AS node-build
 
 WORKDIR /app/web-app
-COPY . /app/web-app
+COPY . /app
 
 RUN npm install
 RUN npm run prod
