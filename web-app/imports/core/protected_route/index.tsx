@@ -78,12 +78,8 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
         case 'waiting':
             return <h1 className="middle-text">Authorizing...</h1>
         case 'success':
-            return (
-                <AuthProvider>
-                    {children}
-                </AuthProvider>
-            )
+            return children
         default:
-            <Navigate to="/login" />
+            return <Navigate to="/login" />
     }
 }
