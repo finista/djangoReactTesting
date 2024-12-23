@@ -28,6 +28,5 @@ urlpatterns = [
     path('api-auth/', include("rest_framework.urls")),
     
     # React app
-    re_path(r"^$", DefaultReactView.as_view()),
     re_path(r"^(?!static)(?:.*)/?$", DefaultReactView.as_view())
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
