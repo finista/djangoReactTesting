@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 
-import ProtectedRoute from '@imports/components/protected_route/component'
+import ProtectedRoute from '@imports/core/protected_route'
 
 import Login from '@imports/pages/Login'
 import Register from '@imports/pages/Register'

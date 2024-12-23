@@ -1,4 +1,4 @@
-import AuthForm from "@imports/components/auth_form/component"
+import AuthForm from "@imports/components/ui/auth_form"
 
 const Login = () => {
   return (
