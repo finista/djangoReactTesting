@@ -26,4 +26,7 @@ RUN python3 -m pip install -r requirements.txt
 WORKDIR /app
 COPY --from=node-build /app/web-app/client/dist /app/api/client/dist
 
+#Make entrypoint.sh an executable
+RUN chmod +x /app/entrypoint.sh
+
 EXPOSE 8000
