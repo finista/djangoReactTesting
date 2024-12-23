@@ -1,9 +1,10 @@
 import { ReactNode } from 'react'
-
-interface ProtectedRouteProps {
+export interface ProtectedRouteProps {
     children: ReactNode;
 }
 
-type AuthorizationState = "waiting" | "invalid" | "success"
+export interface AuthContextType {
+    isAuthorized: boolean;
+}
 
-export type { ProtectedRouteProps, AuthorizationState }
+export type AuthorizationState = "waiting" | "invalid" | "success"
