@@ -164,6 +164,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_TRUSTED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "").split(",")
+CORS_ALLOW_CREDENTIALS = True
+
 CSRF_COOKIE_HTTPONLY = False
 
 if not IS_PRODUCTION:
