@@ -11,8 +11,7 @@ services:
     ports:
       - "8000:8000"
     restart: unless-stopped
-    working_dir: /app/api
-    command: "daphne -b 0.0.0.0 -p 8000 api.asgi:application"
+    command: "entrypoint.sh"
     networks:
       - django_network
     
