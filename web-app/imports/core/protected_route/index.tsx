@@ -1,4 +1,4 @@
-import { useState, useEffect, FC } from "react"
+import { useState, useEffect, FC, createContext, ReactNode, useContext } from "react"
 
 import { Navigate } from "react-router-dom"
 import { jwtDecode } from "jwt-decode"
@@ -7,11 +7,31 @@ import api from "@imports/core/api"
 import { apiConstants } from "@imports/core/constants"
 
 import './style.scss'
-import { ProtectedRouteProps, AuthorizationState } from "./types"
+import { ProtectedRouteProps, AuthorizationState, AuthContextType } from "./types"
 
-const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
-    const [isAuthorized, setIsAuthorized] = useState<AuthorizationState>("waiting")
+const [isAuthorized, setIsAuthorized] = useState<AuthorizationState>("waiting")
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+    const authorizationSuccess = isAuthorized === "success"
+
+    return (
+        <AuthContext.Provider value={{ isAuthorized: authorizationSuccess }}>
+            {children}
+        </AuthContext.Provider>
+    )
+}
+
+export const useAuthContext = () => {
+    const context = useContext(AuthContext)
+    if (!context) {
+        throw new Error('useAuthContext must be used with an AuthProvider!')
+    }
+
+    return context
+}
+
+export const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
     useEffect(() => {
         auth().catch((error) => {
             console.log(`Failed to authorize user, error: ${error}`)
@@ -59,5 +79,3 @@ const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
 
     return isAuthorized === "success" ? children : <Navigate to="/login" />
 }
-
-export default ProtectedRoute
