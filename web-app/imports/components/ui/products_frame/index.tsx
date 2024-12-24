@@ -9,7 +9,11 @@ const ProductsFrame = () => {
         return (
             <div className="products-frame">
                 <span>Products</span>
-                <div className="contents loading"></div>
+                <div className="contents">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                        <div key={index} className="product loading" />
+                    ))}
+                </div>
             </div>
         )
     }
