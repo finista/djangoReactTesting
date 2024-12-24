@@ -7,6 +7,9 @@ import Register from '@imports/pages/Register'
 import Home from '@imports/pages/Home'
 import NotFound from '@imports/pages/NotFound'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 import './style.scss'
 
 const Logout = () => {
