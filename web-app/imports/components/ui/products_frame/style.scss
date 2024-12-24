@@ -16,5 +16,15 @@
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 20px;
+
+        .message {
+            width: 100%;
+            text-align: center;
+            margin: 10px;
+        }
+    }
+
+    .no-grid {
+        display: block;
     }
 }

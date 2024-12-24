@@ -19,12 +19,23 @@ const ProductsFrame = () => {
         )
     }
 
+    if (productContext.products.length <= 0) {
+        return (
+            <div className="products-frame">
+                <span>Products</span>
+                <div className="contents no-grid">
+                    <span className="message">No products found.</span>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div className="products-frame">
             <span>Products</span>
             <div className="contents">
                 {productContext.products.map((product, index) => (
-                    <Product 
+                    <Product
                         key={product.id || index}
                         name={product.name}
                         author={product.author}
