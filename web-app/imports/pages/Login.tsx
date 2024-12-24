@@ -1,8 +1,12 @@
 import AuthForm from "@imports/components/ui/auth_form"
+import Navbar from "@imports/components/shared/navbar"
 
 const Login = () => {
   return (
-    <AuthForm route="user/token/" method="login" />
+    <>
+      <Navbar />
+      <AuthForm route="user/token/" method="login" />
+    </>
   )
 }
 

@@ -1,8 +1,12 @@
+import Navbar from "@imports/components/shared/navbar"
 import AuthForm from "@imports/components/ui/auth_form"
 
 const Register = () => {
   return (
-    <AuthForm route="/user/register/" method="register"/>
+    <>
+      <Navbar />
+      <AuthForm route="/user/register/" method="register" />
+    </>
   )
 }
 

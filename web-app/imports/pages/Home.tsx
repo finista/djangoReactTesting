@@ -1,6 +1,11 @@
+import Navbar from "@imports/components/shared/navbar"
+
 const Home = () => {
   return (
-    <div>Home</div>
+    <>
+      <Navbar />
+      <div>Home</div>
+    </>
   )
 }
 
