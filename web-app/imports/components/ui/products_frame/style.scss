@@ -17,45 +17,4 @@
         grid-template-columns: repeat(5, 1fr);
         gap: 20px;
     }
-    
-}
-
-.product {
-    display: flex;
-    flex-direction: column;
-    min-width: 30%;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rgba(0, 174, 255, 0.178);
-    
-    span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    
-    .name {
-        font-weight: bold;
-        font-size: larger;
-    }
-    
-}
-
-.loading {
-    height: 150px;
-    background: linear-gradient(90deg, #e0e0e000, #ffffff8a, #e0e0e000);
-    background-repeat: no-repeat;
-    background-size: 400% 400%;
-    animation: shimmer 2s infinite;
-}
-
-
-@keyframes shimmer {
-    0% {
-        background-position: 200% 0;
-    }
-    
-    100% {
-        background-position: -200% 0;
-    }
 }

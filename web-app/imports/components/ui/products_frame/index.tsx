@@ -1,4 +1,5 @@
 import { useProductsContext } from '@imports/components/shared/products_context/'
+import { Product, LoadingProduct } from './product_frame/'
 
 import './style.scss'
 
@@ -11,7 +12,7 @@ const ProductsFrame = () => {
                 <span>Products</span>
                 <div className="contents">
                     {Array.from({ length: 5 }).map((_, index) => (
-                        <div key={index} className="product loading" />
+                        <LoadingProduct key={index} />
                     ))}
                 </div>
             </div>
@@ -23,12 +24,14 @@ const ProductsFrame = () => {
             <span>Products</span>
             <div className="contents">
                 {productContext.products.map((product, index) => (
-                    <div key={index} className="product">
-                        <span className='name'>{product.name}</span>
-                        <span className='author'>{product.author}</span>
-                        <span className='description'>{product.description}</span>
-                        <span className='price'>Price: ${product.price}</span>
-                    </div>
+                    <Product 
+                        key={product.id || index}
+                        name={product.name}
+                        author={product.author}
+                        created_at={product.created_at}
+                        description={product.description}
+                        price={product.price}
+                    />
                 ))}
             </div>
         </div>
