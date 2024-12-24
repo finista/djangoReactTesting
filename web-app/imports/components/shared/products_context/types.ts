@@ -1,4 +1,5 @@
 export interface ProductType {
+    readonly id?: number,
     readonly name: string,
     readonly author: string,
     readonly description?: string,

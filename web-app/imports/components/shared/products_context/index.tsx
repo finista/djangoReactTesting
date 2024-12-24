@@ -13,6 +13,7 @@ const ProductsProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         const productData: ProductType[] = [
             {
+                id: 0,
                 name: "Product 1",
                 author: "admin",
                 description: "Product description",
@@ -20,6 +21,7 @@ const ProductsProvider = ({ children }: { children: ReactNode }) => {
                 created_at: 0
             },
             {
+                id: 1,
                 name: "Product 2",
                 author: "admin",
                 description: "Product description",
@@ -27,6 +29,7 @@ const ProductsProvider = ({ children }: { children: ReactNode }) => {
                 created_at: 0
             },
             {
+                id: 2,
                 name: "Product 3",
                 author: "admin",
                 description: "Product description",
