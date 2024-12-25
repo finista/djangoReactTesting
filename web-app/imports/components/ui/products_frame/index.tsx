@@ -1,12 +1,23 @@
-import { useProductsContext } from '@imports/components/shared/products_context/'
-import { Product, LoadingProduct } from './product_frame/'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
+import { AppDispatch, RootState } from '@imports/core/state'
+import { fetchProducts } from '@imports/core/state/slices/productSlice'
+
+import { ProductFrame, LoadingProduct } from './product_frame/'
 import './style.scss'
 
 const ProductsFrame = () => {
-    const productContext = useProductsContext()
+    const dispatch = useDispatch<AppDispatch>()
+    const { products, status, error } = useSelector((state: RootState) => state.products)
 
-    if (!productContext.isLoaded) {
+    useEffect(() => {
+        if (status === 'idle') {
+            dispatch(fetchProducts())
+        }
+    }, [dispatch, status])
+
+    if (status === 'loading') {
         return (
             <div className="products-frame">
                 <span>Products</span>
@@ -19,12 +30,12 @@ const ProductsFrame = () => {
         )
     }
 
-    if (productContext.products.length <= 0) {
+    if (status === 'failed' || products.length <= 0) {
         return (
             <div className="products-frame">
                 <span>Products</span>
                 <div className="contents no-grid">
-                    <span className="message">No products found.</span>
+                    <span className="message">{error || 'No products found.'}</span>
                 </div>
             </div>
         )
@@ -34,8 +45,8 @@ const ProductsFrame = () => {
         <div className="products-frame">
             <span>Products</span>
             <div className="contents">
-                {productContext.products.map((product, index) => (
-                    <Product
+                {products.map((product, index) => (
+                    <ProductFrame
                         key={product.id || index}
                         name={product.name}
                         author={product.author}

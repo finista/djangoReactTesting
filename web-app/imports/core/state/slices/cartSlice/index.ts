@@ -1,17 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface CartState {
-    readonly items: Record<number, number>
-}
-
-interface ItemAction {
-    readonly id: number,
-    readonly amount?: number
-}
-
-const initialState: CartState = {
-    items: {}
-}
+import { initialState, CartState, ItemAction } from "./types";
 
 const cartSlice = createSlice({
     name: "cart",

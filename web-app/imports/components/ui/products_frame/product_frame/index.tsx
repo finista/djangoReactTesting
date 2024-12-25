@@ -1,7 +1,7 @@
-import { ProductType } from "@imports/components/shared/products_context/types"
+import { Product } from "@imports/core/state/slices/productSlice/types"
 import "./styles.scss"
 
-const Product = (props: ProductType) => {
+const ProductFrame = (props: Product) => {
     return (
         <div className="product">
             <span className='name'>{props.name}</span>
@@ -19,4 +19,4 @@ const LoadingProduct = () => {
 }
 
 
-export {Product, LoadingProduct}
+export {ProductFrame, LoadingProduct}
