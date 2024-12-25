@@ -17,7 +17,7 @@ const ProductsFrame = () => {
         }
     }, [dispatch, status])
 
-    if (status === 'loading') {
+    if (status === 'loading' || status === 'idle') {
         return (
             <div className="products-frame">
                 <span>Products</span>
@@ -49,7 +49,7 @@ const ProductsFrame = () => {
                     <ProductFrame
                         key={product.id || index}
                         name={product.name}
-                        author={product.author}
+                        author_name={product.author_name}
                         created_at={product.created_at}
                         description={product.description}
                         price={product.price}

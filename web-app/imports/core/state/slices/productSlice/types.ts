@@ -1,7 +1,8 @@
 export interface Product {
     readonly id?: number,
     readonly name: string,
-    readonly author: string,
+    readonly author?: number,
+    readonly author_name: string,
     readonly description?: string,
     readonly price: number,
     readonly created_at: number

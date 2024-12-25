@@ -5,7 +5,7 @@ const ProductFrame = (props: Product) => {
     return (
         <div className="product">
             <span className='name'>{props.name}</span>
-            <span className='author'>{props.author}</span>
+            <span className='author'>{props.author_name}</span>
             <span className='description'>{props.description}</span>
             <span className='price'>Price: ${props.price}</span>
         </div>
