@@ -11,7 +11,6 @@ export const fetchProducts = createAsyncThunk(
             throw new Error(`Failed to fetch products, error: ${request.statusText || "No error given."}`)
         }
         
-        console.log(request)
         return request.data
     }
 )
