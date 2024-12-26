@@ -1,5 +1,6 @@
 export interface CartState {
     readonly items: Record<number, number>
+    readonly state: 'idle' | 'loading' | 'succeeded' | 'failed'
 }
 
 export interface ItemAction {
@@ -8,5 +9,6 @@ export interface ItemAction {
 }
 
 export const initialState: CartState = {
-    items: {}
+    items: {},
+    state: 'idle'
 }

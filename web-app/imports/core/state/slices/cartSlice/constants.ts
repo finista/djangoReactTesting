@@ -1,0 +1,1 @@
+export const CART_STORE_KEY = 'USR_CART_SAVE'
