@@ -1,9 +1,10 @@
 import { useDispatch } from "react-redux"
 
-import { addItem, subtractItem, reset } from "@imports/core/state/slices/cartSlice"
+import { addItem, subtractItem, removeItem } from "@imports/core/state/slices/cartSlice"
 import { AppDispatch } from "@imports/core/state"
 
 import { ButtonConfiguration } from "./types"
+import "./styles.scss"
 
 const ActionButton = (props: ButtonConfiguration) => {
     const dispatch = useDispatch<AppDispatch>()
@@ -19,7 +20,7 @@ const ActionButton = (props: ButtonConfiguration) => {
             break
             
         case 'remove':
-            actionName = 'Remove'
+            actionName = 'X'
             break
 
         default:
@@ -41,9 +42,9 @@ const ActionButton = (props: ButtonConfiguration) => {
                 break
 
             case 'remove':
-                dispatch(
-                    reset()
-                )
+                dispatch(removeItem({
+                    id: props.target_id
+                }))
                 break
         }
     }

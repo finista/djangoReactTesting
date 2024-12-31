@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import { Product } from "@imports/core/state/slices/productSlice/types"
 import { RootState } from "@imports/core/state"
 
-import ActionButton from "../action_button"
+import ActionButton from "./action_button"
 
 import "./styles.scss"
 
@@ -30,6 +30,10 @@ const ProductFrame = (props: Product) => {
                 <ActionButton
                     target_id={props.id}
                     action="subtract"
+                />
+                <ActionButton
+                    target_id={props.id}
+                    action="remove"
                 />
             </div>
         </div>
