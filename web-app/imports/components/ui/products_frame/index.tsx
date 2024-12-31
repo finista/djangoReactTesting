@@ -5,7 +5,7 @@ import { AppDispatch, RootState } from '@imports/core/state'
 import { fetchProducts } from '@imports/core/state/slices/productSlice'
 import { loadCart } from '@imports/core/state/slices/cartSlice'
 
-import { ProductFrame, LoadingProduct } from './product_frame/'
+import { ProductFrame, LoadingProduct } from '../product_frame'
 import './style.scss'
 
 const ProductsFrame = () => {
