@@ -6,6 +6,7 @@ import Login from '@imports/pages/Login'
 import Register from '@imports/pages/Register'
 import Home from '@imports/pages/Home'
 import NotFound from '@imports/pages/NotFound'
+import Flashcards from "@imports/pages/Flashcards"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -32,6 +33,16 @@ const App = () => {
             <AuthProvider>
               <ProtectedRoute>
                 <Home />
+              </ProtectedRoute>
+            </AuthProvider>
+          }
+        />
+        <Route
+          path="/flashcards"
+          element={
+            <AuthProvider>
+              <ProtectedRoute>
+                <Flashcards />
               </ProtectedRoute>
             </AuthProvider>
           }

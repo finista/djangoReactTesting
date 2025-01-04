@@ -13,9 +13,17 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                     {isAuthorized === "success" ? (
-                        <li className="nav-item">
-                            <a href="/logout" className="nav-link">Logout</a>
-                        </li>
+                        <>
+                            <li className="nav-item">
+                                <a href="/" className="nav-link">Home</a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="/flashcards" className="nav-link">Flashcards</a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="/logout" className="nav-link">Logout</a>
+                            </li>
+                        </>
                     ) : (
                         <>
                             <li className="nav-item">
