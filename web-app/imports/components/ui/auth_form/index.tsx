@@ -17,15 +17,23 @@ const AuthForm: FC<FormProps> = ({ route, method }) => {
     const name: string = method === "login" ? "Login" : "Register"
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        
         if (isLoading) {
             return
         }
-
+        
+        if (username === "" || password === "") {
+            alert("Username and password must not be empty.")
+            return
+        }
+        
         setLoading(true)
-        e.preventDefault()
 
         try {
             const res = await api.post(route, { username, password })
+            console.log(res)
+
             if (method === "login") {
                 localStorage.setItem(apiConstants.ACCESS_TOKEN, res.data.access)
                 localStorage.setItem(apiConstants.REFRESH_TOKEN, res.data.refresh)
@@ -36,8 +44,15 @@ const AuthForm: FC<FormProps> = ({ route, method }) => {
             } else {
                 navigate("/login")
             }
-        } catch (error) {
-            alert(error)
+        } catch (error: any) {
+            switch (error.status){
+                case 401:
+                    alert("Invalid credentials, please make sure the password and username is correct.")
+                    break
+                default:
+                    alert(error)
+                    break
+            }
         } finally {
             setLoading(false)
         }
