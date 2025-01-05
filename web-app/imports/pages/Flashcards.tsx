@@ -1,14 +1,12 @@
 import Navbar from "@imports/components/shared/navbar"
-import FlashcardSet from "@imports/components/ui/flashcard_set"
+
+import FlashcardSetList from "@imports/components/ui/flashcard_set_list"
 
 const Flashcards = () => {
   return (
     <>
       <Navbar />
-      <h3>Your flashcard sets</h3>
-      <div>
-        <FlashcardSet />
-      </div>
+      <FlashcardSetList />
     </>
   )
 }
