@@ -8,3 +8,8 @@ class CreateFlashcardSetSerializer(ModelSerializer):
     
     def create(self, validated_data):
         return FlashcardSet.objects.create(**validated_data)
+    
+class FlashcardSetSerializer(ModelSerializer):
+    class Meta:
+        model = FlashcardSet
+        fields = ['name', 'description', 'creator']

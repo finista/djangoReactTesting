@@ -5,7 +5,7 @@ from rest_framework.response import Response
 import rest_framework.status as status
 
 from .models import FlashcardSet
-from .serializers import CreateFlashcardSetSerializer
+from .serializers import CreateFlashcardSetSerializer, FlashcardSetSerializer
 
 
 class CreateFlashcardSet(APIView):
@@ -43,4 +43,6 @@ class GetFlashcardSets(APIView):
     
     def get(self, request, *args, **kwargs):
         flashcard_sets = FlashcardSet.objects.filter(creator=request.user.id)
-        return Response(flashcard_sets.all(), status=status.HTTP_200_OK)
+        serializer = FlashcardSetSerializer(flashcard_sets, many=True)
+        
+        return Response(serializer.data, status=status.HTTP_200_OK)
