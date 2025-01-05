@@ -3,11 +3,13 @@ import { useState, useEffect, FC, createContext, ReactNode, useContext } from "r
 import { Navigate } from "react-router-dom"
 import { jwtDecode } from "jwt-decode"
 
+import LoadingPage from "@imports/pages/LoadingPage"
+
 import api from "@imports/core/api"
 import { apiConstants } from "@imports/core/constants"
+import { ProtectedRouteProps, AuthorizationState, AuthContextType } from "./types"
 
 import './style.scss'
-import { ProtectedRouteProps, AuthorizationState, AuthContextType } from "./types"
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -77,7 +79,7 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
 
     switch (isAuthorized) {
         case 'waiting':
-            return <h1 className="middle-text">Authorizing...</h1>
+            return <LoadingPage />
         case 'success':
             return children
         default:
