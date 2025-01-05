@@ -24,6 +24,7 @@ from user.views import DefaultReactView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('products.urls')),
+    path('flashcards/', include('flashcards.urls')),
     path('user/', include('user.urls')),
     path('api-auth/', include("rest_framework.urls")),
     

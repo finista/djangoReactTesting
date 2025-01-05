@@ -23,7 +23,7 @@ class DefaultReactView(View):
         except FileNotFoundError as e:
             print("Unable to find a react app build in client folder, error: ", e)
             return HttpResponse(
-                "<h1>React build files not found</h1><p>Run 'npm run build' and ensure the files are in the 'client/' directory.</p>",
+                "<h1>React build files not found</h1><p>Run 'npm run prod' and ensure the files are in the 'client/' directory.</p>",
                 status=404,
             )
 

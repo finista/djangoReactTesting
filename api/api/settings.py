@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     
     'user',
     'products',
+    'flashcards',
 ]
 
 MIDDLEWARE = [
