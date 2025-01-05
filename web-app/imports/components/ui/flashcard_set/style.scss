@@ -2,8 +2,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: fit-content;
     cursor: pointer;
+    margin: 10px;
 
     .flashcard-set-name {
         font-weight: bolder;
@@ -36,11 +38,11 @@
     }
 
     .frm-1 {
-        transform: translate(-70%, 5%) rotate(-5deg);
+        transform: translate(-60%, 5%) rotate(-5deg);
     }
 
     .frm-3 {
-        transform: translate(-30%, 5%) rotate(5deg);
+        transform: translate(-40%, 5%) rotate(5deg);
     }
 
     .frm-2 {

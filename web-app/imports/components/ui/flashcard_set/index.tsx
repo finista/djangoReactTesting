@@ -1,8 +1,9 @@
+import { FlashcardSetProps } from "./types"
 import "./style.scss"
 
-const FlashcardSet = () => {
+const FlashcardSet = (props: FlashcardSetProps) => {
     const clicked = () => {
-        alert("Hai :3")
+        alert("Flashcard set description: " + props.description)
     }
 
     return (
@@ -12,7 +13,7 @@ const FlashcardSet = () => {
                 <div className="frm-2"></div>
                 <div className="frm-3"></div>
             </div>
-            <span className="flashcard-set-name">Placeholder</span>
+            <span className="flashcard-set-name">{props.name}</span>
         </div>
     )
 }

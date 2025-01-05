@@ -3,11 +3,14 @@ import { useState, useEffect } from "react"
 import api from "@imports/core/api"
 
 import { LoadingState } from "@imports/components/shared/types/generic"
-import { FlashcardSet } from "@imports/components/shared/types/flashcards"
+import { FlashcardSet as FlashcardSetType} from "@imports/components/shared/types/flashcards"
+import FlashcardSet from "@imports/components/ui/flashcard_set"
+
+import "./style.scss"
 
 const FlashcardSetList = () => {
     const [loadState, setLoadState] = useState<LoadingState>("idle")
-    const [flashcardSets, setFlashcardSets] = useState<FlashcardSet[]>([])
+    const [flashcardSets, setFlashcardSets] = useState<FlashcardSetType[]>([])
 
     useEffect(() => {
         if (loadState !== "idle") return
@@ -39,8 +42,11 @@ const FlashcardSetList = () => {
     return (
         <div>
             <h3>Your flashcard sets</h3>
-            <div>
-                Currently loaded: {flashcardSets.length} sets.
+            <span>Currently loaded: {flashcardSets.length} sets.</span>
+            <div className="flashcard-set-list">
+                {flashcardSets.map((flashcard_set, index) => (
+                    <FlashcardSet key={index} name={flashcard_set.name} description={flashcard_set.description} />
+                ))}
             </div>
         </div>
     )

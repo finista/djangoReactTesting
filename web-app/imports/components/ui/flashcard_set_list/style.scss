@@ -1,0 +1,9 @@
+.flashcard-set-list {
+    background-color: rgba(91, 46, 255, 0.315);
+    width: fit-content;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
