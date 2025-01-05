@@ -1,4 +1,5 @@
 import { useAuthContext } from "@imports/core/protected_route"
+import NavbarLink from "./navbar_link"
 
 const Navbar = () => {
     const { isAuthorized } = useAuthContext()
@@ -14,24 +15,14 @@ const Navbar = () => {
                 <ul className="navbar-nav mr-auto">
                     {isAuthorized === "success" ? (
                         <>
-                            <li className="nav-item">
-                                <a href="/" className="nav-link">Home</a>
-                            </li>
-                            <li className="nav-item">
-                                <a href="/flashcards" className="nav-link">Flashcards</a>
-                            </li>
-                            <li className="nav-item">
-                                <a href="/logout" className="nav-link">Logout</a>
-                            </li>
+                            <NavbarLink linkTarget="/" linkText="Home" />
+                            <NavbarLink linkTarget="/flashcards" linkText="Flashcards" />
+                            <NavbarLink linkTarget="/logout" linkText="Logout" />
                         </>
                     ) : (
                         <>
-                            <li className="nav-item">
-                                <a href="/login" className="nav-link">Login</a>
-                            </li>
-                            <li className="nav-item">
-                                <a href="/register" className="nav-link">Register</a>
-                            </li>
+                            <NavbarLink linkTarget="/login" linkText="Login" />
+                            <NavbarLink linkTarget="/register" linkText="Register" />
                         </>
                     )}
                 </ul>
