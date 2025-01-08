@@ -38,8 +38,6 @@ const AuthForm: FC<FormProps> = ({ route, method }) => {
                 localStorage.setItem(apiConstants.ACCESS_TOKEN, res.data.access)
                 localStorage.setItem(apiConstants.REFRESH_TOKEN, res.data.refresh)
 
-                console.log(localStorage.getItem(apiConstants.ACCESS_TOKEN))
-
                 navigate("/")
             } else {
                 navigate("/login")
