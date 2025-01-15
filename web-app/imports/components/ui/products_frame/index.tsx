@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { useTranslation } from 'react-i18next'
+
 import { AppDispatch, RootState } from '@imports/core/state'
 import { fetchProducts } from '@imports/core/state/slices/productSlice'
 import { loadCart } from '@imports/core/state/slices/cartSlice'
@@ -10,6 +12,8 @@ import './style.scss'
 
 const ProductsFrame = () => {
     const dispatch = useDispatch<AppDispatch>()
+
+    const { t } = useTranslation()
     
     const { products, status, error } = useSelector((state: RootState) => state.products)
     const cartState = useSelector((state: RootState) => state.cart.state)
@@ -27,7 +31,7 @@ const ProductsFrame = () => {
     if (status === 'loading' || status === 'idle') {
         return (
             <div className="products-frame">
-                <span>Products</span>
+                <span>{t('products.header')}</span>
                 <div className="contents">
                     {Array.from({ length: 5 }).map((_, index) => (
                         <LoadingProduct key={index} />
@@ -40,9 +44,9 @@ const ProductsFrame = () => {
     if (status === 'failed' || products.length <= 0) {
         return (
             <div className="products-frame">
-                <span>Products</span>
+                <span>{t('products.header')}</span>
                 <div className="contents no-grid">
-                    <span className="message">{error || 'No products found.'}</span>
+                    <span className="message">{error || t('products.no_found_error')}</span>
                 </div>
             </div>
         )
@@ -50,7 +54,7 @@ const ProductsFrame = () => {
 
     return (
         <div className="products-frame">
-            <span>Products</span>
+            <span>{t('products.header')}</span>
             <div className="contents">
                 {products.map((product, index) => (
                     <ProductFrame

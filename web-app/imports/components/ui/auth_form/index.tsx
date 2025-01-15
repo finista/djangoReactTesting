@@ -1,6 +1,8 @@
 import { useState, FC, FormEvent } from "react"
 import { useNavigate } from "react-router-dom"
 
+import { useTranslation } from "react-i18next"
+
 import api from "@imports/core/api"
 import { apiConstants } from "@imports/core/constants"
 
@@ -8,6 +10,8 @@ import FormProps from "./types"
 import "./style.scss"
 
 const AuthForm: FC<FormProps> = ({ route, method }) => {
+    const { t } = useTranslation()
+
     const [isLoading, setLoading] = useState(false)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -24,7 +28,7 @@ const AuthForm: FC<FormProps> = ({ route, method }) => {
         }
         
         if (username === "" || password === "") {
-            alert("Username and password must not be empty.")
+            alert(t('auth_form.username_passwd_not_empty_warn'))
             return
         }
         
@@ -45,7 +49,7 @@ const AuthForm: FC<FormProps> = ({ route, method }) => {
         } catch (error: any) {
             switch (error.status){
                 case 401:
-                    alert("Invalid credentials, please make sure the password and username is correct.")
+                    alert(t('auth_form.invalid_credentials'))
                     break
                 default:
                     alert(error)
@@ -63,13 +67,13 @@ const AuthForm: FC<FormProps> = ({ route, method }) => {
                 type="text"
                 className="form-input"
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
+                placeholder={t('auth_form.username_placeholder')}
             />
             <input
                 type="password"
                 className="form-input"
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
+                placeholder={t('auth_form.password_placeholder')}
             />
             <button className="form-button" type="submit">
                 {name}

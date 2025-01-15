@@ -1,11 +1,14 @@
 import '@imports/styles/not_found.scss'
+import { useTranslation } from 'react-i18next'
 
 const NotFound = () => {
+  const { t } = useTranslation()
+
   return (
     <div className="message-div">
       <h1>404</h1>
-      <h2>Not found</h2>
-      <span>The page that you're looking for doesn't exist.</span>
+      <h2>{t('404.top_text')}</h2>
+      <span>{t('404.bottom_text')}</span>
     </div>
   )
 }

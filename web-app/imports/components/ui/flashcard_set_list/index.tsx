@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { useTranslation } from "react-i18next"
 
 import api from "@imports/core/api"
 
@@ -9,6 +10,8 @@ import FlashcardSet from "@imports/components/ui/flashcard_set"
 import "./style.scss"
 
 const FlashcardSetList = () => {
+    const { t } = useTranslation()
+
     const [loadState, setLoadState] = useState<LoadingState>("idle")
     const [flashcardSets, setFlashcardSets] = useState<FlashcardSetType[]>([])
 
@@ -34,15 +37,15 @@ const FlashcardSetList = () => {
     if (loadState !== 'succeeded') {
         return (
             <span>
-                State: {loadState}
+                {t('flashcard.loading_state_prefix')}: {loadState}
             </span>
         )
     }
 
     return (
         <div>
-            <h3>Your flashcard sets</h3>
-            <span>Currently loaded: {flashcardSets.length} sets.</span>
+            <h3>{t('flashcard.sets_header')}</h3>
+            <span>{t('flashcard.currently_loaded', { count: flashcardSets.length })}</span>
             <div className="flashcard-set-list">
                 {flashcardSets.map((flashcard_set, index) => (
                     <FlashcardSet key={index} name={flashcard_set.name} description={flashcard_set.description} />

@@ -1,9 +1,13 @@
 import { FlashcardSetProps } from "./types"
 import "./style.scss"
 
+import { useTranslation } from "react-i18next"
+
 const FlashcardSet = (props: FlashcardSetProps) => {
+    const { t } = useTranslation()
+
     const clicked = () => {
-        alert("Flashcard set description: " + props.description)
+        alert(t("flashcard.description_prefix") + props.description)
     }
 
     return (
