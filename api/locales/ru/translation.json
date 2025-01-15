@@ -1,0 +1,37 @@
+{
+  "404": {
+    "top_text": "Не найдено.",
+    "bottom_text": "Страница или ресурс, который вы ищете, не существует на сервере."
+  },
+  "navbar": {
+    "company_name": "Silly Inc. :3",
+    "home_link": "Главная",
+    "flashcards_link": "Флешкарты",
+    "logout_link": "Выход",
+    "login_link": "Войти",
+    "register_link": "Регистрация"
+  },
+  "auth_form": {
+    "username_passwd_not_empty_warn": "Имя пользователя или пароль не могут быть пустыми.",
+    "username_placeholder": "Имя пользователя",
+    "password_placeholder": "Пароль",
+    "invalid_credentials": "Неверное имя пользователя или пароль. Пожалуйста, попробуйте снова."
+  },
+  "flashcard": {
+    "loading_state_prefix": "Состояние: ",
+    "sets_header": "Ваши наборы флешкарт.",
+    "currently_loaded_one": "У вас в данный момент {{count}} набор.",
+    "currently_loaded_other": "У вас в данный момент {{count}} наборов.",
+    "description_prefix": "Описание набора флешкарт: "
+  },
+  "products": {
+    "header": "Продукты",
+    "no_found_error": "Продукты не найдены.",
+    "reset_card_btn": "Сбросить корзину",
+    "product_text": "Продукт",
+    "total_cost": "Общая стоимость:"
+  },
+  "home": {
+    "top_text": "Главная :3"
+  }
+}

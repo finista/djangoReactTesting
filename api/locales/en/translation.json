@@ -1,0 +1,37 @@
+{
+  "404": {
+    "top_text": "Not found.",
+    "bottom_text": "The page or resource that you're looking for does not exist on the server."
+  },
+  "navbar": {
+    "company_name": "Silly Inc. :3",
+    "home_link": "Home",
+    "flashcards_link": "Flashcards",
+    "logout_link": "Logout",
+    "login_link": "Login",
+    "register_link": "Register"
+  },
+  "auth_form": {
+    "username_passwd_not_empty_warn": "Username or password cannot be empty.",
+    "username_placeholder": "Username",
+    "password_placeholder": "Password",
+    "invalid_credentials": "The username or password is incorrect. Please try again."
+  },
+  "flashcard": {
+    "loading_state_prefix": "State: ",
+    "sets_header": "Your flashcard sets.",
+    "currently_loaded_one": "You currently have {{count}} set.",
+    "currently_loaded_other": "You currently have {{count}} sets.",
+    "description_prefix": "Flashcard set description: "
+  },
+  "products": {
+    "header": "Products",
+    "no_found_error": "No products were found.",
+    "reset_card_btn": "Reset cart",
+    "product_text": "Product",
+    "total_cost": "Total cost:"
+  },
+  "home": {
+    "top_text": "Home :3"
+  }
+}

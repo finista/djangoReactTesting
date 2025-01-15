@@ -152,6 +152,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "static"
 REACT_CLIENT_PATH = BASE_DIR / "client/dist/index.html"
+LOCALE_FOLDER_PATH = BASE_DIR / "locales"
 
 STATICFILES_DIRS = [
     BASE_DIR / "client"
