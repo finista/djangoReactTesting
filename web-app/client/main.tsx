@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { store } from '@imports/core/state'
 
+import "@imports/core/i18next"
 import App from "@imports/core/app"
 
 createRoot(document.getElementById('root')!).render(
