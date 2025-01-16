@@ -1,7 +1,9 @@
 import { useState, FC, FormEvent } from "react"
 import { useNavigate } from "react-router-dom"
-
 import { useTranslation } from "react-i18next"
+import { useAppDispatch } from "@imports/core/state/hooks"
+
+import { sendNotification } from "@imports/core/state/slices/notificationSlice"
 
 import api from "@imports/core/api"
 import { apiConstants } from "@imports/core/constants"
@@ -17,6 +19,7 @@ const AuthForm: FC<FormProps> = ({ route, method }) => {
     const [password, setPassword] = useState("")
 
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
 
     const name: string = method === "login" ? "Login" : "Register"
 
@@ -28,7 +31,13 @@ const AuthForm: FC<FormProps> = ({ route, method }) => {
         }
         
         if (username === "" || password === "") {
-            alert(t('auth_form.username_passwd_not_empty_warn'))
+            dispatch(sendNotification({
+                title: "Warning",
+                content: t('auth_form.username_passwd_not_empty_warn'),
+                type: "warn",
+                lifeTime: 5000
+            }))
+
             return
         }
         
@@ -49,7 +58,13 @@ const AuthForm: FC<FormProps> = ({ route, method }) => {
         } catch (error: any) {
             switch (error.status){
                 case 401:
-                    alert(t('auth_form.invalid_credentials'))
+                    dispatch(sendNotification({
+                        title: "Warning",
+                        content: t('auth_form.invalid_credentials'),
+                        type: "warn",
+                        lifeTime: 5000
+                    }))
+
                     break
                 default:
                     alert(error)

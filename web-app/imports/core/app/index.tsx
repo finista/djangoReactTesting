@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react"
 
 import { ProtectedRoute, AuthProvider } from '@imports/core/protected_route'
 
+import NotificationContainer from "@imports/components/shared/notification_container";
 import LoadingPage from "@imports/pages/LoadingPage";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -29,6 +30,8 @@ const RegisterAndLogout = () => {
 const App = () => {
   return (
     <BrowserRouter>
+      <NotificationContainer />
+
       <Suspense fallback={<LoadingPage />}>
         <Routes>
           <Route
