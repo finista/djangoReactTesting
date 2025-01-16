@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '@imports/core/state/hooks'
 
 import { useTranslation } from 'react-i18next'
 
@@ -11,12 +11,12 @@ import { ProductFrame, LoadingProduct } from '../product_frame'
 import './style.scss'
 
 const ProductsFrame = () => {
-    const dispatch = useDispatch<AppDispatch>()
+    const dispatch = useAppDispatch<AppDispatch>()
 
     const { t } = useTranslation()
     
-    const { products, status, error } = useSelector((state: RootState) => state.products)
-    const cartState = useSelector((state: RootState) => state.cart.state)
+    const { products, status, error } = useAppSelector((state: RootState) => state.products)
+    const cartState = useAppSelector((state: RootState) => state.cart.state)
 
     useEffect(() => {
         if (status === 'idle') {

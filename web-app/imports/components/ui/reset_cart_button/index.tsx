@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useAppDispatch, useAppSelector } from "@imports/core/state/hooks"
 import { useTranslation } from "react-i18next"
 
 import { AppDispatch, RootState } from "@imports/core/state"
@@ -7,8 +7,8 @@ import { reset } from "@imports/core/state/slices/cartSlice"
 const ResetCartButton = () => {
     const { t } = useTranslation()
 
-    const dispatch = useDispatch<AppDispatch>()    
-    const { items } = useSelector((selector: RootState) => selector.cart)
+    const dispatch = useAppDispatch<AppDispatch>()    
+    const { items } = useAppSelector((selector: RootState) => selector.cart)
 
     const resetCart = () => {
         dispatch(reset())

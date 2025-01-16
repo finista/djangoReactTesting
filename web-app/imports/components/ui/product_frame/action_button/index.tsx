@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux"
+import { useAppDispatch } from "@imports/core/state/hooks"
 
 import { addItem, subtractItem, removeItem } from "@imports/core/state/slices/cartSlice"
 import { AppDispatch } from "@imports/core/state"
@@ -7,7 +7,7 @@ import { ButtonConfiguration } from "./types"
 import "./styles.scss"
 
 const ActionButton = (props: ButtonConfiguration) => {
-    const dispatch = useDispatch<AppDispatch>()
+    const dispatch = useAppDispatch<AppDispatch>()
 
     var actionName: string
     switch (props.action) {
